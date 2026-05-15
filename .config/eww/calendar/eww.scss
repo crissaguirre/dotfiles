@@ -1,0 +1,101 @@
+* {
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+  font-size: 15px;
+  color: #cdd6f4;
+}
+
+.cal-root {
+  background: #0d1117;
+  border: 1px solid #21262d;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.cal-month {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffead3;
+  letter-spacing: 0.04em;
+}
+
+.cal-year {
+  font-size: 11px;
+  color: #6e7681;
+  margin-top: 2px;
+}
+
+.cal-nav-btn {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  color: #89b4fa;
+  padding: 4px 8px;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.cal-nav-btn:hover {
+  background: #1f2937;
+  border-color: #89b4fa;
+}
+
+.cal-today-btn {
+  color: #ff6699;
+  border-color: rgba(255,102,153,0.3);
+}
+
+.cal-events-box {
+  border-top: 1px solid #21262d;
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+.cal-events-title {
+  font-size: 10px;
+  color: #6e7681;
+  letter-spacing: 0.08em;
+}
+
+.event-item {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 7px 10px;
+}
+
+.event-dot {
+  border-radius: 9999px;
+  min-width: 6px;
+  min-height: 6px;
+}
+
+.event-dot.google { background: #89b4fa; }
+.event-dot.teams  { background: #cba6f7; }
+
+.event-name {
+  font-size: 11px;
+  font-weight: bold;
+  color: #cdd6f4;
+}
+
+.event-time {
+  font-size: 10px;
+  color: #6e7681;
+}
+
+.event-badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.event-badge.google {
+  background: rgba(137,180,250,0.1);
+  color: #89b4fa;
+}
+
+.event-badge.teams {
+  background: rgba(203,166,247,0.1);
+  color: #cba6f7;
+}

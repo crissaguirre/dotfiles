@@ -1,0 +1,79 @@
+(defvar cal-selected-day "")
+
+(defpoll cal-date :interval "1s"
+  :initial "{}"
+  `python3 ~/.config/eww/calendar/cal_data.py`)
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+    :x "15px"
+    :y "15px"
+    :width "360px"
+    :height "520px"
+    :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (calendar-widget))
+
+(defwidget calendar-widget []
+  (box :class "cal-root"
+       :orientation "v"
+       :space-evenly false
+    (cal-header)
+    (cal-grid)
+    (cal-events)))
+
+(defwidget cal-header []
+  (box :class "cal-header"
+       :orientation "h"
+       :space-evenly false
+    (box :orientation "v"
+         :space-evenly false
+         :hexpand true
+      (label :class "cal-month" :text {jq(cal-date, '.month')} :xalign 0)
+      (label :class "cal-year"  :text {jq(cal-date, '.weekday')} :xalign 0))
+    (box :class "cal-nav"
+         :orientation "h"
+         :space-evenly false
+         :spacing 4
+      (button :class "cal-nav-btn" :onclick "eww update cal-selected-day=''" "‹")
+      (button :class "cal-nav-btn cal-today-btn" :onclick "eww update cal-selected-day=''" "●")
+      (button :class "cal-nav-btn" :onclick "eww update cal-selected-day=''" "›"))))
+
+(defwidget cal-grid []
+  (calendar :class "cal-grid-widget"
+            :show-week-numbers true
+            :show-heading false
+            :show-day-names true))
+
+(defwidget cal-events []
+  (box :orientation "v"
+       :space-evenly false
+       :class "cal-events-box"
+    (box :class "cal-events-title-row"
+         :orientation "h"
+      (label :class "cal-events-title" :text "eventos" :xalign 0))
+    (scroll :vscroll true
+            :height 160
+      (box :orientation "v"
+           :space-evenly false
+           :spacing 6
+        (for event in {jq(cal-date, '.events')}
+          (event-item :name {jq(event, '.name')}
+                      :time {jq(event, '.time')}
+                      :source {jq(event, '.source')}))))))
+
+(defwidget event-item [name time source]
+  (box :class "event-item"
+       :orientation "h"
+       :space-evenly false
+       :spacing 8
+    (box :class {"event-dot " + source} :width 6 :height 6)
+    (box :orientation "v"
+         :space-evenly false
+         :hexpand true
+      (label :class "event-name" :text name :xalign 0 :truncate true)
+      (label :class "event-time" :text time :xalign 0))
+    (label :class {"event-badge " + source} :text {source == "teams" ? "Teams" : "Google"})))

@@ -1,0 +1,80 @@
+@import "../hypr/themes/colors.css";
+
+window#waybar {
+  background: transparent;
+  font-size: 15px;
+  font-family: "JetBrains Mono", "FontAwesome", "Symbols Nerd font";
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: @secondary;
+}
+
+tooltip {
+    background: #000000;
+    border-radius: 7px;
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: #8aadf4;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#workspaces button.active {
+  font-weight: bold;
+  /* color: @primary */
+}
+
+#custom-notification,
+#cpu,
+#temperature,
+#memory,
+#workspaces,
+#clock,
+#window,
+#pulseaudio,
+#custom-updates,
+#disk,
+#network {
+  padding: 3px 6px;
+  background: #11111B;
+  border-radius: 30px;
+  margin: 5px 3px;
+}
+
+#tray {
+  margin-left: 8px;
+}
+
+/* #custom-updates { */
+/*   color: #1788e4; */
+/* } */
+/**/
+/* #custom-powermenu { */
+/*   color: #e06c75; */
+/*   padding-right: 11px; */
+/*   margin-right: 8px; */
+/* } */
+/**/
+/* #scratchpad { */
+/*   color: #cffafe; */
+/*   padding-right: 4px; */
+/*   padding-left: 4px; */
+/* } */
+/**/
+#pulseaudio {
+  padding-right: 14px;
+}
+
+#network {
+  min-width: 200px;
+}
+
+#clock {
+  margin-left: 8px;
+  font-size: 17px;
+  font-weight: bold;
+}
