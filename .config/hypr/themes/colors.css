@@ -1,0 +1,12 @@
+@define-color primary #8000ff;
+@define-color secondary #00eaff;
+
+@define-color accent #1788e4;
+@define-color surface #11111B;
+@define-color text #ffffff;
+@define-color danger #e06c75;
+@define-color success #98c379;
+@define-color warning #e5c07b;
+@define-color info #61afef;
+@define-color muted #929db1;
+
