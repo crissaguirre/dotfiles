@@ -1,183 +1,323 @@
 // -*- mode: jsonc -*-
-{
-    "position": "top",
-    "exlusive": "true",
-    "passthrough": "true",
-    "gtk-layer-shell": "true",
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
-    "height": 40,
-    "modules-left": [
-        "custom/notification",
-        "hyprland/workspaces",
-        "tray",
-        "hyprland/window"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "network",
-        "temperature",
-        "memory",
-        "cpu",
-        "disk",
-        "pulseaudio#microphone",
-        "pulseaudio"
-    ],
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "separator": {
-        "format": " | "
-    },
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 35,
-        "rewrite": {
-            "": "Harsh"
+[
+    {
+        "name": "bar-horizontal",
+        "output": "HDMI-A-2",
+        "position": "top",
+        "exlusive": "true",
+        "passthrough": "true",
+        "gtk-layer-shell": "true",
+        "margin-top": 5,
+        "margin-left": 5,
+        "margin-right": 5,
+        "height": 40,
+        "modules-left": [
+            "custom/notification",
+            "hyprland/workspaces",
+            "tray",
+            "hyprland/window"
+        ],
+        "modules-center": [
+            "clock"
+        ],
+        "modules-right": [
+            "network",
+            "temperature",
+            "memory",
+            "cpu",
+            "disk",
+            "pulseaudio#microphone",
+            "pulseaudio"
+        ],
+        "tray": {
+            "icon-size": 21,
+            "spacing": 10
         },
-        "separate-outputs": true
-    },
-    "hyprland/submap": {
-        "format": "✌️ {}",
-        "max-length": 8,
-        "tooltip": true
-    },
-    "hyprland/workspaces": {
-        "format": "{name}: {icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "-99": "",
-            "active": "",
-            "default": ""
-        }
-    },
-    "custom/notification": {
-        "tooltip": true,
-        "format": "<span size='16pt'>{icon}</span> {text}",
-        "format-icons": {
-            "notification": "󱅫",
-            "none": "󰂜",
-            "dnd-notification": "󰂠",
-            "dnd-none": "󰪓",
-            "inhibited-notification": "󰂛",
-            "inhibited-none": "󰪑",
-            "dnd-inhibited-notification": "󰂛",
-            "dnd-inhibited-none": "󰪑"
+        "separator": {
+            "format": " | "
         },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-    "clock": {
-        // "format": "{:%A %H:%M day %d}   ",
-        "format": "<span color='#89b4fa'>󰥔 </span><span color='#cdd6f4'>{:%H:%M | %a %d %b}</span>",
-        "format-alt": "{:%A, %B %d, %Y (%H:%M:%S)}   ",
-        "tooltip-format": "<span font='IBM Plex Mono Bold 13'><big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "calendar": {
-            "mode": "month",
-            "on-scroll": 1,
-            "weeks-pos": "left",
-            "on-click-right": "mode",
-            "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                //"days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        "hyprland/window": {
+            "format": "{}",
+            "max-length": 35,
+            "rewrite": {
+                "": "Harsh"
+            },
+            "separate-outputs": true
+        },
+        "hyprland/submap": {
+            "format": "✌️ {}",
+            "max-length": 8,
+            "tooltip": true
+        },
+        "hyprland/workspaces": {
+            "format": "{name}: {icon}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "7": "",
+                "8": "",
+                "9": "",
+                "10": "",
+                "-99": "",
+                "active": "",
+                "default": ""
             }
-        }
-    },
-    "cpu": {
-        "format": "<span color='#89b4fa'>󰍛</span> <span color='#cdd6f4'>{usage}%</span>",
-        "interval": 2,
-        "format-alt-click": "click",
-        "format-alt": "<span color='#00FF00'>{icon0}{icon1}{icon2}{icon3}</span> <span color='#FFFFFF'>{usage:>2}%</span> <span color='#00FF00'>󰍛</span>",
-        "format-icons": [
-            "▁",
-            "▂",
-            "▃",
-            "▄",
-            "▅",
-            "▆",
-            "▇",
-            "█"
-        ]
-    },
-    "memory": {
-        "interval": 3,
-        "format": "<span color='#f38ba8'> </span> <span color='#cdd6f4'>{used:0.1f}g</span>"
-    },
-    "temperature": {
-        "format": "<span color='#ff6699'>{icon}</span> <span color='#cdd6f4'>{temperatureC}°C</span>",
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        // "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr}",
-        "format-ethernet": "<span color='#ff6699'></span> <span color='#cdd6f4'>{ipaddr}/{cidr}</span>",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "<span ></span> <span color='#cdd6f4'>{ifname}:{ipaddr}/{cidr}</span>"
-    },
-    "pulseaudio": {
-        "format": "<span color='#a6e3a1'>{icon} </span><span color='#cdd6f4'>{volume}%</span>",
-        "format-bluetooth": "<span color='#a6e3a1'>{icon}</span>  <span color='#cdd6f4'>{volume}%</span>",
-        "tooltip": false,
-        "format-muted": "<span color='#f38ba8'>󰝟</span>",
-        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 10%-",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
+        },
+        "custom/notification": {
+            "tooltip": true,
+            "format": "<span size='16pt'>{icon}</span> {text}",
+            "format-icons": {
+                "notification": "󱅫",
+                "none": "󰂜",
+                "dnd-notification": "󰂠",
+                "dnd-none": "󰪓",
+                "inhibited-notification": "󰂛",
+                "inhibited-none": "󰪑",
+                "dnd-inhibited-notification": "󰂛",
+                "dnd-inhibited-none": "󰪑"
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        },
+        "clock": {
+            // "format": "{:%A %H:%M day %d}   ",
+            "format": "<span color='#89b4fa'>󰥔 </span><span color='#cdd6f4'>{:%H:%M | %a %d %b}</span>",
+            "format-alt": "{:%A, %B %d, %Y (%H:%M:%S)}   ",
+            "tooltip-format": "<span font='IBM Plex Mono Bold 13'><big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt></span>",
+            "calendar": {
+                "mode": "month",
+                "on-scroll": 1,
+                "weeks-pos": "left",
+                "on-click-right": "mode",
+                "format": {
+                    "months": "<span color='#ffead3'><b>{}</b></span>",
+                    //"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            }
+        },
+        "cpu": {
+            "format": "<span color='#89b4fa'>󰍛</span> <span color='#cdd6f4'>{usage}%</span>",
+            "interval": 2,
+            "format-alt-click": "click",
+            "format-alt": "<span color='#00FF00'>{icon0}{icon1}{icon2}{icon3}</span> <span color='#FFFFFF'>{usage:>2}%</span> <span color='#00FF00'>󰍛</span>",
+            "format-icons": [
+                "▁",
+                "▂",
+                "▃",
+                "▄",
+                "▅",
+                "▆",
+                "▇",
+                "█"
             ]
+        },
+        "memory": {
+            "interval": 3,
+            "format": "<span color='#f38ba8'> </span> <span color='#cdd6f4'>{used:0.1f}g</span>"
+        },
+        "temperature": {
+            "format": "<span color='#ff6699'>{icon}</span> <span color='#cdd6f4'>{temperatureC}°C</span>",
+            "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            "critical-threshold": 80,
+            "format-icons": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "network": {
+            // "interface": "wlp2*", // (Optional) To force the use of this interface
+            "format-wifi": "{essid} ({signalStrength}%) ",
+            // "format-ethernet": "{ipaddr}/{cidr} ",
+            "tooltip-format": "{ifname} via {gwaddr}",
+            "format-ethernet": "<span color='#ff6699'></span> <span color='#cdd6f4'>{ipaddr}/{cidr}</span>",
+            "format-linked": "{ifname} (No IP) ",
+            "format-disconnected": "Disconnected ⚠",
+            "format-alt": "<span ></span> <span color='#cdd6f4'>{ifname}:{ipaddr}/{cidr}</span>"
+        },
+        "pulseaudio": {
+            "format": "<span color='#a6e3a1'>{icon} </span><span color='#cdd6f4'>{volume}%</span>",
+            "format-bluetooth": "<span color='#a6e3a1'>{icon}</span>  <span color='#cdd6f4'>{volume}%</span>",
+            "tooltip": false,
+            "format-muted": "<span color='#f38ba8'>󰝟</span>",
+            "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+            "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 10%-",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": [
+                    "",
+                    "",
+                    ""
+                ]
+            }
+        },
+        "pulseaudio#microphone": {
+            "format": "{format_source}",
+            "tooltip": false,
+            "format-source": "<span color='#f38ba8'></span><span color='#cdd6f4'>{volume}%</span>",
+            "format-source-muted": "",
+            "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+            "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-"
+        },
+        "disk": {
+            "interval": 3,
+            "path": "/home",
+            "format": "<span color='#a6e3a1'> </span><span color='#cdd6f4'>{free}</span>",
+            "unit": "GB"
         }
     },
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "tooltip": false,
-        "format-source": "<span color='#f38ba8'></span><span color='#cdd6f4'>{volume}%</span>",
-        "format-source-muted": "",
-        "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-"
-    },
-    "disk": {
-        "interval": 3,
-        "path": "/home",
-        "format": "<span color='#a6e3a1'> </span><span color='#cdd6f4'>{free}</span>",
-        "unit": "GB"
+    {
+        "name": "bar-vertical",
+        "output": "HDMI-A-1",
+        "position": "top",
+        "exlusive": "true",
+        "passthrough": "true",
+        "gtk-layer-shell": "true",
+        "margin-top": 5,
+        "margin-left": 5,
+        "margin-right": 5,
+        "height": 40,
+        "modules-left": [
+            "custom/notification",
+            "hyprland/workspaces"
+        ],
+        "modules-center": [
+            "clock"
+        ],
+        "modules-right": [
+            "memory",
+            "cpu",
+            "pulseaudio#microphone",
+            "pulseaudio"
+        ],
+        "separator": {
+            "format": " | "
+        },
+        "hyprland/workspaces": {
+            "format": "{name}: {icon}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "7": "",
+                "8": "",
+                "9": "",
+                "10": "",
+                "-99": "",
+                "active": "",
+                "default": ""
+            }
+        },
+        "custom/notification": {
+            "tooltip": true,
+            "format": "<span size='16pt'>{icon}</span> {text}",
+            "format-icons": {
+                "notification": "󱅫",
+                "none": "󰂜",
+                "dnd-notification": "󰂠",
+                "dnd-none": "󰪓",
+                "inhibited-notification": "󰂛",
+                "inhibited-none": "󰪑",
+                "dnd-inhibited-notification": "󰂛",
+                "dnd-inhibited-none": "󰪑"
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        },
+        "clock": {
+            // "format": "{:%A %H:%M day %d}   ",
+            "format": "<span color='#89b4fa'>󰥔 </span><span color='#cdd6f4'>{:%H:%M | %a %d %b}</span>",
+            "format-alt": "{:%A, %B %d, %Y (%H:%M:%S)}   ",
+            "tooltip-format": "<span font='IBM Plex Mono Bold 13'><big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt></span>",
+            "calendar": {
+                "mode": "month",
+                "on-scroll": 1,
+                "weeks-pos": "left",
+                "on-click-right": "mode",
+                "format": {
+                    "months": "<span color='#ffead3'><b>{}</b></span>",
+                    //"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            }
+        },
+        "cpu": {
+            "format": "<span color='#89b4fa'>󰍛</span> <span color='#cdd6f4'>{usage}%</span>",
+            "interval": 2,
+            "format-alt-click": "click",
+            "format-alt": "<span color='#00FF00'>{icon0}{icon1}{icon2}{icon3}</span> <span color='#FFFFFF'>{usage:>2}%</span> <span color='#00FF00'>󰍛</span>",
+            "format-icons": [
+                "▁",
+                "▂",
+                "▃",
+                "▄",
+                "▅",
+                "▆",
+                "▇",
+                "█"
+            ]
+        },
+        "memory": {
+            "interval": 3,
+            "format": "<span color='#f38ba8'> </span> <span color='#cdd6f4'>{used:0.1f}g</span>"
+        },
+        "pulseaudio": {
+            "format": "<span color='#a6e3a1'>{icon} </span><span color='#cdd6f4'>{volume}%</span>",
+            "format-bluetooth": "<span color='#a6e3a1'>{icon}</span>  <span color='#cdd6f4'>{volume}%</span>",
+            "tooltip": false,
+            "format-muted": "<span color='#f38ba8'>󰝟</span>",
+            "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+            "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 10%-",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": [
+                    "",
+                    "",
+                    ""
+                ]
+            }
+        },
+        "pulseaudio#microphone": {
+            "format": "{format_source}",
+            "tooltip": false,
+            "format-source": "<span color='#f38ba8'></span><span color='#cdd6f4'>{volume}%</span>",
+            "format-source-muted": "",
+            "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+            "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-"
+        }
     }
-}
+]
