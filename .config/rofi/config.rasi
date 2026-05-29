@@ -1,122 +1,132 @@
 * {
-    font:           "Figtree 13";
-    g-spacing:      10px;
-    g-margin:       0;
-    b-radius:       10px;
-    g-padding:      8px;
-    w-padding:      14px;
-
-    bg:             #0a0a14FF;
-    bg-alt:         #111118FF;
-    bg-input:       rgba(255,255,255,0.05);
-    border-col:     rgba(255,255,255,0.10);
-    fg:             rgba(255,255,255,0.85);
-    fg-dim:         rgba(255,255,255,0.30);
-    hl-bg:          #FFFFFFFF;
-    hl-fg:          #0a0a14FF;
-    wbg:            rgba(10,10,20,0.92);
+    font:           "Outfit Light 13";
+    bg:             rgba(14,18,32,0.92);
+    border-col:     rgba(160,180,230,0.12);
+    fg:             rgba(220,225,245,0.85);
+    fg-dim:         rgba(160,180,230,0.38);
+    hl-bg:          rgba(160,185,255,0.09);
+    hl-border:      rgba(160,185,255,0.22);
+    hl-fg:          rgba(200,215,255,0.95);
+    input-bg:       rgba(255,255,255,0.04);
+    cell-bg:        rgba(255,255,255,0.05);
+    cell-border:    rgba(255,255,255,0.06);
 }
 
 configuration {
-    modi:           "drun";
-    show-icons:     true;
-    display-drun:   "";
+    modi:                "drun";
+    show-icons:          true;
+    display-drun:        "᛫ apps";
     drun-display-format: "{name}";
-    icon-theme:     "Papirus-Dark";
+    icon-theme:          "Papirus-Dark";
 }
 
 window {
     transparency:       "real";
-    width:              500px;
-    border-radius:      @b-radius;
-    background-color:   @wbg;
+    width:              600px;
+    border-radius:      16px;
+    background-color:   @bg;
     border:             1px solid;
     border-color:       @border-col;
-    padding:            @w-padding;
+    padding:            20px;
 }
 
 mainbox {
-    spacing:    10px;
-    padding:    0;
-    children:   ["inputbar", "listview"];
+    spacing:  14px;
+    padding:  0;
+    children: ["inputbar", "listview"];
 }
 
 inputbar {
     children:           ["prompt", "entry"];
-    spacing:            8px;
-    padding:            10px 12px;
-    background-color:   @bg-input;
-    border-radius:      8px;
+    spacing:            10px;
+    padding:            10px 14px;
+    background-color:   @input-bg;
+    border-radius:      10px;
     border:             1px solid;
     border-color:       @border-col;
 }
 
 prompt {
-    text-color:     @fg-dim;
-    font:           "Figtree 13";
+    text-color: @fg-dim;
+    font:       "Cormorant Garamond Light Italic 15";
 }
 
 entry {
     placeholder:        "Search apps";
     text-color:         @fg;
     placeholder-color:  @fg-dim;
+    font:               "Outfit Light 13";
 }
 
 listview {
-    columns:        1;
-    lines:          8;
+    columns:        4;
+    lines:          3;
     fixed-height:   true;
+    fixed-columns:  true;
+    flow:           horizontal;
     cycle:          false;
     scrollbar:      false;
-    spacing:        6px;
+    spacing:        8px;
     border:         0px;
 }
 
-element active.normal {
-    background-color: rgba(255,255,255,0.08);
-    text-color:       @fg;
-}
-
-element normal.urgent {
-    background-color: rgba(255, 100, 100, 0.15);
-}
-
-
 element {
-    padding:            9px 12px;
-    spacing:            12px;
-    border-radius:      8px;
-    background-color:   transparent;
-    text-color:         @fg;
-    border:             0px;
+    padding:            16px 8px 14px;
+    spacing:            10px;
+    border-radius:      12px;
+    background-color:   @cell-bg;
+    text-color:         rgba(200,210,240,0.60);
+    border:             1px solid;
+    border-color:       @cell-border;
+    orientation:        vertical;
 }
 
 element-icon {
-    size:           28px;
-    border-radius:  6px;
+    size:               46px;
+    border-radius:      11px;
+    horizontal-align:   0.5;
 }
 
 element-text {
-    vertical-align: 0.5;
+    horizontal-align:   0.5;
+    vertical-align:     0.5;
+    font:               "Outfit Light 11";
 }
 
 element normal.normal {
-    background-color: transparent;
-    text-color:       @fg;
+    background-color:   @cell-bg;
+    text-color:         rgba(200,210,240,0.60);
+    border-color:       @cell-border;
 }
 
 element alternate.normal {
-    background-color: @bg-alt;
-    text-color:       @fg;
+    background-color:   @cell-bg;
+    text-color:         rgba(200,210,240,0.60);
+    border-color:       @cell-border;
+}
+
+element active.normal {
+    background-color:   @cell-bg;
+    text-color:         @fg;
+    border-color:       @cell-border;
 }
 
 element selected.normal,
 element selected.active {
-    background-color: @hl-bg;
-    text-color:       @hl-fg;
+    background-color:   @hl-bg;
+    text-color:         @hl-fg;
+    border-color:       @hl-border;
+}
+
+element normal.urgent {
+    background-color:   rgba(255,100,100,0.10);
+    text-color:         rgba(255,160,160,0.80);
+    border-color:       rgba(255,100,100,0.15);
 }
 
 message {
     border:             0px;
     background-color:   transparent;
+    text-color:         rgba(160,180,230,0.20);
+    font:               "Cormorant Garamond Light Italic 11";
 }
